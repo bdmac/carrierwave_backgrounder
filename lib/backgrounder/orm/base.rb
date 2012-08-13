@@ -59,7 +59,7 @@ module CarrierWave
               elsif defined? ::Qu
                 ::Qu.enqueue #{worker}, self.class.name, id, #{column}.mounted_as
               elsif defined? ::Sidekiq
-                ::Sidekiq::Client.enqueue #{worker}, self.class.name, id, #{column}.mounted_as
+                ::Sidekiq::Client.enqueue #{worker}, self.class.name, id.to_s, #{column}.mounted_as
               end
             end
 
